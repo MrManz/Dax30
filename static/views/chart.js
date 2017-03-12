@@ -1,6 +1,5 @@
-
-var margin = {top: 50, right: 50, bottom: 50, left: 50},
-            width  = $("#chartarea").width() - margin.right - margin.left,
+var margin = {top: 50, right: 20, bottom: 50, left: 50},
+            width  = $("#chartarea").width() - margin.left - margin.right,
             height = ($("#chartarea").width() - margin.right - margin.left)/3;
 
     var parseDate = d3.timeParse("%Y-%m-%d");
@@ -46,7 +45,7 @@ var margin = {top: 50, right: 50, bottom: 50, left: 50},
             .on("move", move);
 
     var svg = d3.select("#chartarea").append("svg")
-            .attr("width", width + margin.left + margin.right)
+            .attr("width", width + margin.left + margin.right +50)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -60,7 +59,7 @@ var margin = {top: 50, right: 50, bottom: 50, left: 50},
     d3.csv("/api/values", function(error, data) {
         var accessor = candlestick.accessor();
 
-        data = data.slice(0, 200).map(function(d) {
+        data = data.slice(0, 300).map(function(d) {
             return {
                 date: parseDate(d.Date),
                 open: +d.Open,

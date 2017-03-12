@@ -14,7 +14,7 @@ app.controller('NewsController', function ($scope, $http) {
 
     $http.get("/api/news")
         .then(function(response) {
-            $scope.news = response.data;
+            $scope.news = response.data.slice(1, 8);
             console.log(response.data)
         });
 
