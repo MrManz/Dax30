@@ -1,0 +1,42 @@
+path.candle {
+        stroke: #000000;
+    }
+
+    path.candle.body {
+        stroke-width: 0;
+    }
+
+    path.candle.up {
+        fill: #89DA59;
+        stroke: #89DA59;
+    }
+
+    path.candle.down {
+        fill: #FF420E;
+        stroke: #FF420E;
+    }
+
+    .y.annotation.left path {
+        fill: #00AA00;
+    }
+
+    .y.annotation.right path {
+        fill: #FF0000;
+    }
+
+    .x.annotation path {
+        fill: #DDD80E;
+    }
+
+    .crosshair {
+        cursor: crosshair;
+    }
+
+    .crosshair path.wire {
+        stroke: #DDDDDD;
+        stroke-dasharray: 1, 1;
+    }
+
+    .crosshair .axisannotation path {
+        fill: #DDDDDD;
+    }
