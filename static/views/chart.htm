@@ -1,0 +1,16 @@
+<div id="chartarea">
+    <link rel="stylesheet" href="/static/css/chart.css">
+    <script src="/static/views/chart.js"></script>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10" >
+            <ul class="list-group" ng-controller="NewsController" style="height: 300px; overflow-y:scroll;">
+                <a href="#" class="list-group-item list-group-item-action" ng-repeat="n in news">{{ n }}</a>
+            </ul>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+</div>
+

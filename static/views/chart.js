@@ -1,9 +1,7 @@
-<div id="chartarea">
-    <link rel="stylesheet" href="/static/chart.css">
-    <script>
-    var margin = {top: 50, right: 40, bottom: 20, left: 40},
+
+var margin = {top: 50, right: 50, bottom: 50, left: 50},
             width  = $("#chartarea").width() - margin.right - margin.left,
-            height = 400;
+            height = ($("#chartarea").width() - margin.right - margin.left)/3;
 
     var parseDate = d3.timeParse("%Y-%m-%d");
 
@@ -29,11 +27,14 @@
     var ohlcRightAnnotation = techan.plot.axisannotation()
             .axis(yRightAxis)
             .orient('right')
+            .format(d3.format(',.2f'))
             .translate([width, 0]);
 
     var timeTopAnnotation = techan.plot.axisannotation()
             .axis(xTopAxis)
-            .orient('top');
+            .orient('top')
+            .format(d3.timeFormat('%d-%m-%Y'))
+            .width(80);
 
     var crosshair = techan.plot.crosshair()
             .xScale(x)
@@ -44,7 +45,7 @@
             .on("out", out)
             .on("move", move);
 
-    var svg = d3.select("div").append("svg")
+    var svg = d3.select("#chartarea").append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
@@ -56,7 +57,7 @@
             .attr("x", width - 5)
             .attr("y", 15);
 
-    d3.csv("/api/", function(error, data) {
+    d3.csv("/api/values", function(error, data) {
         var accessor = candlestick.accessor();
 
         data = data.slice(0, 200).map(function(d) {
@@ -105,7 +106,7 @@
         svg.append('text')
                 .attr("x", 5)
                 .attr("y", 15)
-                .text("Chart");
+                .text("Fresenius Medical Care");
     });
 
     function enter() {
@@ -118,6 +119,3 @@
 
     function move() {
     }
-
-</script>
-</div>
