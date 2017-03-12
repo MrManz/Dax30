@@ -20,5 +20,3 @@ gunicorn
 # Pandas
 # ----------------------
 pandas
-
-urllib
